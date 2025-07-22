@@ -14,6 +14,7 @@ class Current
   public:
     Current();
     virtual ~Current();
+    unsigned short meas;
     void init();
     void measure();
 };

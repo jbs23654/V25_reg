@@ -9,8 +9,8 @@
 void Com::RX_data()
 {
 //send status
-  status.to_send ();
-  Tramsmit (&status.f_state, sizeof(status.f_state));
+  //status.to_send ();
+  //Tramsmit (&status.f_state, sizeof(status.f_state));
 
   //send check command
 

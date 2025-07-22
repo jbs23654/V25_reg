@@ -106,6 +106,7 @@ class Com
       public:
 	Header header;
 	unsigned short power;
+
     };
     Frame_power f_power;
     class Frame_modulation

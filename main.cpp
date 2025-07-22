@@ -11,6 +11,8 @@
 #include "../CODE/BRD/Com.h"
 #include "../CODE/BRD/Sync.h"
 #include "../CODE/BRD/Status.h"
+#include "../CODE/BRD/Current.h"
+
 
 
 
@@ -41,6 +43,7 @@ int main(void)
   power.init ();
   mod.init ();
   sync.Sync_init();
+  //current.init();
   //int pulse = 1'000'000;
   //int pause = 0;
   //com.Tramsmit("test");
@@ -54,16 +57,16 @@ int main(void)
     loop_delay ();
     com.RX_data ();
 
-    if (lasreg.is_working () && (lasreg.work == false) && (status.state == Status::State::ready))
+    if (lasreg.is_working () && (lasreg.work == false))
     {
       lasreg.start ();
 
     }
-    else if (!lasreg.is_working () && (lasreg.work == true) && (status.state == Status::State::works))
+    else if (!lasreg.is_working () && (lasreg.work == true) )
     {
+  //    current.measure();
       lasreg.stop ();
     }
-    com.Tramsmit("test");
 
     /*if (!modulation.is_working () && modulation.is_pulse_done ())
      {

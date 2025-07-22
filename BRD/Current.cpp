@@ -28,10 +28,17 @@ void Current::init()
 
   ADC->CCR |= ADC_CCR_PRESC_0;
   ADC1->CR |= ADC_CR_ADVREGEN;
-
-
-  ADC1->CR |= ADC_CR_ADCAL;
+  for (volatile int i = 0; i < 3000;)
+    {
+      i = i + 1;
+    }
+  ADC1->CFGR1 |= ADC_CFgr2
+      ADC1->CR |= ADC_CR_ADCAL;
   while (ADC1->CR & ADC_CR_ADCAL);
+  for (volatile int i = 0; i < 3000;)
+    {
+      i = i + 1;
+    }
 
   //calibration//
   ADC1->CFGR1 |= ADC_CFGR1_CONT ;
@@ -45,9 +52,8 @@ void Current::init()
 void Current::measure()
 {
   ADC1->CR |= ADC_CR_ADEN;
-  while(ADC1->CR & ADC_CR_ADEN);
+  while((ADC1->ISR & ADC_ISR_ADRDY));
   ADC1->ISR = ADC_ISR_OVR;
-
-  ADC
+  meas = ADC1->DR;
 
 }
